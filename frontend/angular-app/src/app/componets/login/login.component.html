@@ -1,0 +1,27 @@
+<div id="login-form-wrap">
+  <h2>Login</h2>
+  <form id="login-form" [formGroup]="loginForm" autocomplete="off">
+    <div>
+      <div>
+        <p>
+          <input formControlName="email" type="email" id="email" name="email" placeholder="Email" required>
+          <i class="validation"><span></span><span></span></i>
+        </p>
+        <span *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required',
+         'email')">*Email is required</span>
+      </div>
+      <div>
+        <p>
+          <input formControlName="password" type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+        </p>
+        <span *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">*Password is required</span>
+      </div>
+    </div>
+    <p>
+      <input (click)="submitForm()"  type="submit" id="login" value="Login">
+    </p>
+  </form>
+  <div id="signup-wrap">
+    <p>Not registered? <a href="signup">Signup</a><p>
+  </div>
+</div>

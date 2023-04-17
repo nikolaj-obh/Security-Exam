@@ -1,0 +1,37 @@
+<div id="signup-form-wrap">
+  <h2>Signup</h2>
+  <form id="signup-form" [formGroup]="signupForm">
+    <div>
+      <div>
+        <p>
+          <input formControlName="email" type="text" id="email" name="email" placeholder="Email" required><i class="validation"><span></span><span></span></i>
+          <span *ngIf="signupForm.controls['email'].dirty && signupForm.hasError('required', 'email')">*Email is required</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <input formControlName="name" type="text" id="name" name="name" placeholder="Name" required><i class="validation"><span></span><span></span></i>
+          <span *ngIf="signupForm.controls['name'].dirty && signupForm.hasError('required', 'name')">*Name is required</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <input formControlName="password" type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+          <span *ngIf="signupForm.controls['password'].dirty && signupForm.hasError('required', 'password')">*Password is required</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <input formControlName="confirmedPassword" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required><i class="validation"><span></span><span></span></i>
+          <span *ngIf="signupForm.controls['confirmedPassword'].dirty && signupForm.hasError('required', 'confirmedPassword')">*Confirm password is required</span>
+          <span *ngIf="signupForm.controls['password'].value !== signupForm.controls['confirmedPassword'].value">*Password and Confirm password must be the same</span>
+        </p>
+      </div>
+      <div>
+        <p>
+          <input (click)="submitForm()" type="submit" id="signup" value="signup">
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
