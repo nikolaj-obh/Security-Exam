@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" class="navbar">
   <div>
-  <a href="/"><span>VISITED</span></a>
+    <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
   </div>
   <div>
-    <a href="/admin"><span>Admin dashboard</span></a>
+    <a routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page">Admin Dashboard</a>
+  </div>
+  <div>
+    <button (click)="onLogout()">Logout</button>
   </div>
 </mat-toolbar>

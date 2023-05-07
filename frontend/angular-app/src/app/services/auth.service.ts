@@ -35,6 +35,7 @@ export class AuthService {
         localStorage.setItem('token', response.token)
         //this.currentUser.next(userInfo);
         this._isLoggedIn.next(true);
+        this.currentUser.next(response.user);
         //console.log(userInfo)
         //return userInfo.user
       })
@@ -47,5 +48,11 @@ export class AuthService {
       email: user.email,
       password: user.password
     }, )
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this._isLoggedIn.next(false);
+    this.currentUser.next(null);
   }
 }
