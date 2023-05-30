@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cards")
+@RequestMapping("/api/cards")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CardController {
     // TODO implement missing CRUD operations

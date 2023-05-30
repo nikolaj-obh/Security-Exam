@@ -29,7 +29,7 @@ export class LoginComponent {
     this.authService
       .login(credentials)
       .subscribe((response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       });
   }
 }

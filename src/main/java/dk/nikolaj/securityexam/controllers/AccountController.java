@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("api/accounts")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountController {
 
@@ -29,9 +29,9 @@ public class AccountController {
     public ResponseEntity<Account> get(@PathVariable Long id) {
         try {
             Account account = accountService.getAccount(id);
-            return new ResponseEntity<Account>(account, HttpStatus.OK);
+            return new ResponseEntity<>(account, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<Account>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

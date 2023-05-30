@@ -20,6 +20,7 @@ import {AdministratorComponent} from "./componets/administrator/administrator.co
 import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './componets/home/home.component';
 import {AuthGuard} from "./services/auth.guard";
+import { PageNotFoundComponent } from './componets/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {AuthGuard} from "./services/auth.guard";
     LoginComponent,
     SignupComponent,
     AdministratorComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

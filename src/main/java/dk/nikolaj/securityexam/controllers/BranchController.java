@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/branches")
+@RequestMapping("/api/branches")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BranchController {
 
@@ -29,9 +29,9 @@ public class BranchController {
     public ResponseEntity<Branch> get(@PathVariable Long id) {
         try {
             Branch branch = branchService.getBranch(id);
-            return new ResponseEntity<Branch>(branch, HttpStatus.OK);
+            return new ResponseEntity<>(branch, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<Branch>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

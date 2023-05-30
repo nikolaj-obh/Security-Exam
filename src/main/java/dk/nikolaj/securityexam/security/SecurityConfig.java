@@ -1,4 +1,5 @@
 package dk.nikolaj.securityexam.security;
+
 import dk.nikolaj.securityexam.security.jwt.JwtAuthEntryPoint;
 import dk.nikolaj.securityexam.security.jwt.JwtAuthenticationFilter;
 import dk.nikolaj.securityexam.security.service.MyUserDetailsService;
@@ -10,7 +11,6 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,9 +22,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private JwtAuthEntryPoint authEntryPoint;
+    private final JwtAuthEntryPoint authEntryPoint;
 
-    private MyUserDetailsService myUserDetailsService;
+    private final MyUserDetailsService myUserDetailsService;
 
     @Autowired
     public SecurityConfig(MyUserDetailsService myUserDetailsService, JwtAuthEntryPoint authEntryPoint) {

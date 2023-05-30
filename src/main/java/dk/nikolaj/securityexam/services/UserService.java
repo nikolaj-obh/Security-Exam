@@ -3,7 +3,6 @@ package dk.nikolaj.securityexam.services;
 import dk.nikolaj.securityexam.entities.User;
 import dk.nikolaj.securityexam.repositories.UserRepository;
 import dk.nikolaj.securityexam.exceptions.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,13 +10,15 @@ import java.util.List;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<User> getUsers() {
-        List<User> users = new ArrayList<>();
-        userRepository.findAll().forEach(users::add);
-        return users;
+        return new ArrayList<>(userRepository.findAll());
     }
 
     public boolean existsByUsername(String email) {
@@ -29,7 +30,7 @@ public class UserService {
     }
 
     public User findUserById(int id) {
-        return userRepository.findById(id).orElseThrow(()-> new NotFoundException());
+        return userRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     public void deleteUserById(int id) {
