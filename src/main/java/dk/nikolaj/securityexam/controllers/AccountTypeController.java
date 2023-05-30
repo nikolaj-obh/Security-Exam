@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/account-type")
+@RequestMapping("/api/account-type")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountTypeController {
 
@@ -29,9 +29,9 @@ public class AccountTypeController {
     public ResponseEntity<AccountType> get(@PathVariable Long id) {
         try {
             AccountType accountType = accountTypeService.getAccountType(id);
-            return new ResponseEntity<AccountType>(accountType, HttpStatus.OK);
+            return new ResponseEntity<>(accountType, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<AccountType>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     // TODO implement missing CRUD operations

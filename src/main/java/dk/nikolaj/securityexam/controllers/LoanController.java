@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/loans")
+@RequestMapping("/api/loans")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LoanController {
 
@@ -29,9 +29,9 @@ public class LoanController {
     public ResponseEntity<Loan> get(@PathVariable Long id) {
         try {
             Loan loan = loanService.getLoan(id);
-            return new ResponseEntity<Loan>(loan, HttpStatus.OK);
+            return new ResponseEntity<>(loan, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<Loan>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

@@ -3,20 +3,23 @@ package dk.nikolaj.securityexam.services;
 import dk.nikolaj.securityexam.entities.Role;
 import dk.nikolaj.securityexam.exceptions.NotFoundException;
 import dk.nikolaj.securityexam.repositories.RoleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class RoleService {
-    @Autowired
-    private RoleRepository roleRepository;
+
+    private final RoleRepository roleRepository;
+
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
 
     public Set<Role> getRoles() {
-        Set<Role> roles = new HashSet<>();
-        roleRepository.findAll().forEach(roles::add);
-        return roles;
+        return new HashSet<>(roleRepository.findAll());
     }
 
     public Role addRole(Role role) {

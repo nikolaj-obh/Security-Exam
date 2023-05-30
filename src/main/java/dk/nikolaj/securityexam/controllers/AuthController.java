@@ -8,7 +8,6 @@ import dk.nikolaj.securityexam.entities.User;
 import dk.nikolaj.securityexam.security.jwt.JwtAuthToken;
 import dk.nikolaj.securityexam.services.RoleService;
 import dk.nikolaj.securityexam.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,13 +26,12 @@ import java.util.Set;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
-    private AuthenticationManager authenticationManager;
-    private UserService userService;
-    private RoleService roleService;
-    private PasswordEncoder passwordEncoder;
-    private JwtAuthToken jwtAuthToken;
+    private final AuthenticationManager authenticationManager;
+    private final UserService userService;
+    private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtAuthToken jwtAuthToken;
 
-    @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserService userService, RoleService roleService, PasswordEncoder passwordEncoder, JwtAuthToken jwtAuthToken) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;

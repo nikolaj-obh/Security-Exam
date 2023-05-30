@@ -3,7 +3,6 @@ package dk.nikolaj.securityexam.security.jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -13,9 +12,9 @@ import java.util.Date;
 @Component
 public class JwtAuthToken {
 
-    private int jwtExpirationMs = 80000;
+    private final int jwtExpirationMs = 80000;
 
-    private String jwtSecretKey = "secret";
+    private final String jwtSecretKey = "secret";
 
     public String generateToken(Authentication authentication){
         String username = authentication.getName();

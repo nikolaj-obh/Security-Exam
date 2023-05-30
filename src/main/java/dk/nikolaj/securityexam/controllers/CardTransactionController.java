@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/card-transactions")
+@RequestMapping("/api/card-transactions")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CardTransactionController {
 
@@ -29,9 +29,9 @@ public class CardTransactionController {
     public ResponseEntity<CardTransaction> get(@PathVariable Long id) {
         try {
             CardTransaction cardTransaction = cardTransactionService.getCardTransaction(id);
-            return new ResponseEntity<CardTransaction>(cardTransaction, HttpStatus.OK);
+            return new ResponseEntity<>(cardTransaction, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<CardTransaction>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

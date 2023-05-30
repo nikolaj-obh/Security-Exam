@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/employees")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EmployeeController {
 
@@ -29,9 +29,9 @@ public class EmployeeController {
     public ResponseEntity<Employee> get(@PathVariable Long id) {
         try {
             Employee employee = employeeService.getEmployee(id);
-            return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+            return new ResponseEntity<>(employee, HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
